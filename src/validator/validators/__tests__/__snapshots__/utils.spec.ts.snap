@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convertAjvErrors() all fields defined converts properly 1`] = `
+Array [
+  Object {
+    "code": "required",
+    "message": "c is required",
+    "path": Array [
+      "b",
+    ],
+    "severity": 0,
+  },
+]
+`;
+
+exports[`convertAjvErrors() keyword field is missing converts properly 1`] = `
+Array [
+  Object {
+    "code": "",
+    "message": "c is required",
+    "path": Array [
+      "b",
+    ],
+    "severity": 0,
+  },
+]
+`;

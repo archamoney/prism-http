@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HttpValidator validateInput() all validations are turned on returns validation errors for whole request structure 1`] = `
+Object {
+  "_tag": "Left",
+  "left": Array [
+    Object {
+      "code": "type",
+      "message": "should be boolean",
+      "path": Array [
+        "body",
+        "completed",
+      ],
+      "severity": 0,
+    },
+    Object {
+      "code": "format",
+      "message": "should match format \\"date-time\\"",
+      "path": Array [
+        "header",
+      ],
+      "severity": 0,
+    },
+    Object {
+      "code": "pattern",
+      "message": "should match pattern \\"^(yes|no)$\\"",
+      "path": Array [
+        "query",
+        "overwrite",
+      ],
+      "severity": 0,
+    },
+  ],
+}
+`;
+
+exports[`HttpValidator validateOutput() all validations are turned on returns validation errors for whole request structure 1`] = `
+Object {
+  "_tag": "Left",
+  "left": Array [
+    Object {
+      "message": "The received media type \\"application/something\\" does not match the ones specified in the current response: application/json, application/xml",
+      "severity": 0,
+    },
+    Object {
+      "code": "type",
+      "message": "should be boolean",
+      "path": Array [
+        "body",
+        "completed",
+      ],
+      "severity": 0,
+    },
+    Object {
+      "code": "format",
+      "message": "should match format \\"date-time\\"",
+      "path": Array [
+        "header",
+      ],
+      "severity": 0,
+    },
+  ],
+}
+`;
