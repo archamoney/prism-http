@@ -12,7 +12,7 @@ const errors_1 = require("../errors");
 const InternalHelpers_1 = require("./InternalHelpers");
 const types_1 = require("../../types");
 const outputNoContentFoundMessage = (contentTypes) => `Unable to find content for ${contentTypes}`;
-const findEmptyResponse = (response, headers, mediaTypes) => pipeable_1.pipe(mediaTypes, Array_1.findIndex(ct => ct.includes('*/*')), O.map(() => ({ code: response.code, headers })));
+const findEmptyResponse = (response, headers, mediaTypes) => pipeable_1.pipe(mediaTypes, Array_1.findIndex(ct => !ct.includes('*/*')), O.map(() => ({ code: response.code, headers })));
 const helpers = {
     negotiateByPartialOptionsAndHttpContent({ code, exampleKey, dynamic }, httpContent) {
         const { mediaType } = httpContent;
