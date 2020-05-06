@@ -22,7 +22,19 @@ jsf.option({
 });
 
 export function generate(source: JSONSchema): Either<Error, unknown> {
-  return tryCatch(() => jsf.generate(cloneDeep(source)), toError);
+  return tryCatch(() => {
+    const dynamicResult = jsf.generate(cloneDeep(source));
+
+    if (source && source.properties && dynamicResult) {
+        for (const key in dynamicResult) {
+            if (source.properties[key] && source.properties[key]['x-static']) {
+                dynamicResult[key] = source.properties[key]['x-static'];
+            }
+        }
+    }
+    
+    return dynamicResult;
+  }, toError);
 }
 
 export function generateStatic(source: JSONSchema): Either<Error, unknown> {

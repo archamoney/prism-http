@@ -17,7 +17,17 @@ jsf.option({
     maxLength: 100,
 });
 function generate(source) {
-    return Either_1.tryCatch(() => jsf.generate(lodash_1.cloneDeep(source)), Either_1.toError);
+    return Either_1.tryCatch(() => {
+        const dynamicResult = jsf.generate(lodash_1.cloneDeep(source));
+        if (source && source.properties && dynamicResult) {
+            for (const key in dynamicResult) {
+                if (source.properties[key] && source.properties[key]['x-static']) {
+                    dynamicResult[key] = source.properties[key]['x-static'];
+                }
+            }
+        }
+        return dynamicResult;
+    }, Either_1.toError);
 }
 exports.generate = generate;
 function generateStatic(source) {
